@@ -20,7 +20,7 @@
 
     let enableAssistant = false;
     let initComplete = false;
-    let rpcEndpoints = ['https://rpc.hellomoon.io/cfd5910f-fb7d-4489-9b32-f97193eceefd','https://solana-api.syndica.io/access-token/WPoEqWQ2auQQY1zHRNGJyRBkvfOLqw58FqYucdYtmy8q9Z84MBWwqtfVf8jKhcFh/rpc'];
+    let rpcEndpoints = ['https://solana-mainnet.g.alchemy.com/v2/IGOh_jHqM7jfWRre4P15NSzW-zBDBwV0','https://rpc.hellomoon.io/9309be50-3c98-477a-a4fc-3fbd687f97c2'];
     const priorityFee = 1; // Priority Fee added to each transaction in Lamports. Set to 0 (zero) to disable priority fees. 1 Lamport = 0.000000001 SOL
 
     const connectionProxy = {
@@ -755,9 +755,9 @@
             let txHash = response.txHash;
             let confirmation = response.confirmation;
             let txResult = await solanaConnection.getTransaction(txHash, {commitment: 'confirmed', preflightCommitment: 'confirmed', maxSupportedTransactionVersion: 1});
-            //let priorityHistory = await solanaConnection.getRecentPrioritizationFees();
-            //console.log('priorityHistory: ', priorityHistory);
-            if (confirmation.name == 'TransactionExpiredBlockheightExceededError' && !txResult) {
+            /*//let priorityHistory = await solanaConnection.getRecentPrioritizationFees();
+            //console.log('priorityHistory: ', priorityHistory);*/
+	    if (confirmation.name == 'TransactionExpiredBlockheightExceededError' && !txResult) {
                 console.log('-----RETRY-----');
                 txResult = await txSignAndSend(ix);
             }
