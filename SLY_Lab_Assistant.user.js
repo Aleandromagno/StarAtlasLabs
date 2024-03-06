@@ -755,7 +755,7 @@
             let txHash = response.txHash;
             let confirmation = response.confirmation;
             let txResult = await solanaConnection.getTransaction(txHash, {commitment: 'confirmed', preflightCommitment: 'confirmed', maxSupportedTransactionVersion: 1});
-            /*//let priorityHistory = await solanaConnection.getRecentPrioritizationFees();
+            /*let priorityHistory = await solanaConnection.getRecentPrioritizationFees();
             //console.log('priorityHistory: ', priorityHistory);*/
 	    if (confirmation.name == 'TransactionExpiredBlockheightExceededError' && !txResult) {
                 console.log('-----RETRY-----');
